@@ -8,15 +8,25 @@ import Header from './BaiTapLayout1/Header';
 import Btap2 from './Btap2/Btap2';
 import DataBinding from './DataBinding/DataBinding';
 import HandleEven from './HandelEvent/HandleEven';
+import styleling from './StyleingComponent/Stylling';
+import Stylling from './StyleingComponent/Stylling';
+import RenderWithState from './RenderWithState/RenderWithState';
+import BaiTapChonXe from './RenderWithState/BaiTapChonXe/BaiTapChonXe';
+import RenderWithMap from './RenderWithMap/RenderWithMap';
+
 
 function App() {
   return (
     <div className="App">
-    {/* <Btap1/> */}
+     {/* <Btap1/> */}
 
     {/* <Btap2/> */}
     {/* <DataBinding/> */}
-    <HandleEven/>
+    {/* <HandleEven/> */}
+    {/* <Stylling/> */}
+    {/* <RenderWithState/> */}
+    {/* <BaiTapChonXe/> */}
+    <RenderWithMap/>
     </div>
   );
 }
