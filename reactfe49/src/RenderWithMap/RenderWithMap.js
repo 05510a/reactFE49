@@ -6,7 +6,16 @@ export default class RenderWithMap extends Component {
         { id: 2, name: 'Iphone Note 10Plus', price: 1000 },
         { id: 3, name: 'htc m10', price: 2000 }
     ]
-
+    renderTable = () => {
+        return this.producList.map((item, index) => {
+            return <tr key={index}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+                <td><button className="text-danger">Xoas</button></td>
+            </tr>
+        })
+    }
     renderProduct = () => {
         // cách 1
         // let content = [];
@@ -30,8 +39,8 @@ export default class RenderWithMap extends Component {
             return <div className="col-4 " key={index}><div className="card text-left">
                 <img className="card-img-top" src="http://picsum.photos/200/200" alt />
                 <div className="card-body">
-        <h4 className="card-title">{product.name}</h4>
-        <p className="card-text">{product.price}</p>
+                    <h4 className="card-title">{product.name}</h4>
+                    <p className="card-text">{product.price}</p>
                 </div>
             </div>
             </div>
@@ -41,10 +50,25 @@ export default class RenderWithMap extends Component {
         return arrJSXProduct;
     }
 
+
     render() {
         return (
+            // <div>
+            //     {this.renderProduct()}
+            // </div>
             <div>
-                {this.renderProduct()}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>prive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderTable()}
+                    </tbody>
+                </table>
             </div>
         )
     }
