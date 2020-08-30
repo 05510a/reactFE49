@@ -17,6 +17,8 @@ import FilmHeader from './RenderWithMap/FilmHeader';
 import BaiTapRenderPhim from './RenderWithMap/BaiTapRenderPhim';
 import DemoProps from './Props/DemoProps';
 import BaiTapQLSP from './Props/BaiTapQLSP';
+import ThongTinSinhVien from './Props/ThongTinSinhVien';
+import BaiTapGioHang from './Props/BaiTapGioHang/BaiTapGioHang';
 
 
 function App() {
@@ -46,7 +48,9 @@ let mangSanPham = [
     {/* <DemoProps/> */}
     {/* <BaiTapQLSP/>
     <BaiTapQLSP/> */}
-    <BaiTapQLSP mangSanPham={mangSanPham}/>
+    {/* <BaiTapQLSP mangSanPham={mangSanPham}/> */}
+    {/* <BaiTapQLSP/> */}
+    <BaiTapGioHang/>
     </div>
   );
 }

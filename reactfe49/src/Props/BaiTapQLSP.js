@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SanPham from './SanPham'
 
 export default class BaiTapQLSP extends Component {
 state = {
@@ -7,16 +8,9 @@ state = {
    
     renderSanPham = () => {
 // thêm dấu ? sau mảng sản phẩm thì bên app ko truyền giá trị cho nó nó vẫn làm nhưng ko có giá trị
-        return this.props.mangSanPham.map((sanPham, index) => {
-            return <div className=" col-3 card text-left" key={index}>
-                <img className="card-img-top" src={sanPham.hinhAnh} alt={sanPham.hinhAnh} style={{height:250}} />
-                <div className="card-body">
-                    <h4 className="card-title">{sanPham.tenSP}</h4>
-                    <p className="card-text">{sanPham.gia}</p>
-                    <button onClick={()=>{
-                        this.xemChiTiet(sanPham)
-                    }} className="btn btn-success">Xem chi tiết</button>
-                </div>
+        return this.props.mangSanPham?.map((sanPham, index) => {
+            return <div key={index}>
+                <SanPham sp={sanPham} xemChiTiet={this.xemChiTiet}/>
             </div>
             
 
@@ -34,8 +28,7 @@ state = {
     render() {
         // cach boc tach thuoc tinh cua doi tuong nhanh trong ES6
         let {maSP,tenSP,hinhAnh,manHinh,cameraSau,cameraTruoc,heDieuHanh,gia,ram,rom} = this.state.sanPhamChiTiet;
-        return (
-            <div className="container">
+        return (<div className="container">
                 <h3>Danh sách sản phẩm</h3>
                 <div className="row">
                     {this.renderSanPham()}

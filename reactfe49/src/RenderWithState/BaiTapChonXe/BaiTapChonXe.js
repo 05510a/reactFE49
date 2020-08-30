@@ -41,10 +41,10 @@ export default class BaiTapChonXe extends Component {
             </div>
         )
     }
-    change = () =>{
-        this.setState({src:'./img/CarBasic/products/red-car.jpg'},()=>{
-            console.log(this.state.login);
-        });
-    }
+    // change = () =>{
+    //     this.setState({src:'./img/CarBasic/products/red-car.jpg'},()=>{
+    //         console.log(this.state.login);
+    //     });
+    // }
    
 }
