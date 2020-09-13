@@ -15,11 +15,11 @@ const stateDefault = {
     tongSoBanChoi:0,
     mangXucXac:[
         {ma:1,hinhAnh:'./img/game_xuc_xac/1.png'},
-        {ma:2,hinhAnh:'./img/game_xuc_xac/1.png'},
-        {ma:3,hinhAnh:'./img/game_xuc_xac/1.png'},
+        {ma:2,hinhAnh:'./img/game_xuc_xac/2.png'},
+        {ma:3,hinhAnh:'./img/game_xuc_xac/3.png'},
     ]
 }
-
+ 
 export const gameXucXacReducer = (state = stateDefault,action) =>{
     switch (action.type){
         case 'DAT_CUOC_TAI_XIU' : {

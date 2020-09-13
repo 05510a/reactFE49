@@ -31,7 +31,7 @@ export const GioHangReducer = (state = stateDefault, action) => {
             state.gioHang = gioHangUpdate;
             //Trả về state mới
             return { ...state };
-        }
+        }   
         case 'XOA_GIO_HANG': {
             //sao chepps giá trị giỏ hàng ra 1 biến 
             const gioHangUpdate = [...state.gioHang];

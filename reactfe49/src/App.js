@@ -21,6 +21,8 @@ import ThongTinSinhVien from './Props/ThongTinSinhVien';
 import BaiTapGioHang from './Props/BaiTapGioHang/BaiTapGioHang';
 import BaiTapGioHangRedux from './BaiTapRedux/BaiTapGioHangRedux/BaiTapGioHangRedux';
 import BaiTapGameTaiXiu from './BaiTapRedux/BaiTapGameTaiXiu/BaiTapGameTaiXiu';
+import FormSinhVien from './ReactForm/FormSinhVien';
+import DanhSachSinhVien from './ReactForm/DanhSachSinhVien';
 
 
 function App() {
@@ -53,7 +55,8 @@ let mangSanPham = [
     {/* <BaiTapQLSP mangSanPham={mangSanPham}/> */}
     {/* <BaiTapQLSP/> */}
     {/* <BaiTapGioHangRedux/> */}
-    <BaiTapGameTaiXiu/>
+    {/* <BaiTapGameTaiXiu/> */}
+    <DanhSachSinhVien/>
     </div>
   );
 }
