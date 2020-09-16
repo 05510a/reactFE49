@@ -62,7 +62,7 @@ export const GioHangReducer = (state = stateDefault, action) => {
             }
             state.gioHang = gioHangUpdate;
             return{...state};
-        }
+        }   
         default: return { ...state }
     }
 }

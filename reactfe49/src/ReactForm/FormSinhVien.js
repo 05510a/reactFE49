@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import swal from 'sweetalert2'
-import {themSinhVienAction} from '../redux/actions/QuanLiSinhVienActions'
+import { themSinhVienAction,capNhapSinhVienAction} from '../redux/actions/QuanLiSinhVienActions'
 class FormSinhVien extends Component {
 
     state = {
@@ -92,7 +92,17 @@ class FormSinhVien extends Component {
             'success'
         )
     }
+    // componentWillReceiveProps(newProps){
+    //     // life Cycle chạy sau khi props thay đổi và trước khi render
+    //     // component không chạy lại khi setstate 
+    //     // mỗi lần người dùng bấm chỉnh sửa thì props thay đổi => newProps chính là props mới (state.sinhVienSua của redux)=>
+    //     // đem props mới gán vào this.state.values
+    //     this.setState({
+    //         values:newProps.sinhvienSua
+    //     })
+    // }
     render() {
+        let sinhvienSua =this.state.values;
         return (
             <form onSubmit={this.handleSummit} className="container-fluid">
                 <div className="card text-left">
@@ -102,14 +112,15 @@ class FormSinhVien extends Component {
                             <div className="col-6">
                                 <div className="form-group ">
                                     <p> Mã Sinh viên </p>
-                                    <input className="form-control" name="maSinhVien" onChange={this.handleChangeInput}>
+                                    <input className="form-control" name="maSinhVien" onChange={this.handleChangeInput}
+                                    value={sinhvienSua.maSinhVien}>
 
                                     </input>
                                     <p className="text-danger ">{this.state.errors.maSinhVien}</p>
                                 </div>
                                 <div className="form-group">
                                     <p> Tên Sinh Viên </p>
-                                    <input className="form-control" name="tenSinhVien" onChange={this.handleChangeInput}>
+                                    <input className="form-control" name="tenSinhVien" onChange={this.handleChangeInput} value={sinhvienSua.tenSinhVien}>
 
                                     </input>
                                     <p className="text-danger">{this.state.errors.tenSinhVien}</p>
@@ -118,14 +129,14 @@ class FormSinhVien extends Component {
                             <div className="col-6">
                                 <div className="form-group">
                                     <p> email </p>
-                                    <input type_="email" className="form-control" name="email" onChange={this.handleChangeInput}>
+                                    <input type_="email" className="form-control" name="email" onChange={this.handleChangeInput}value={sinhvienSua.email}>
 
                                     </input>
                                     <p className="text-danger">{this.state.errors.email}</p>
                                 </div>
                                 <div className="form-group">
                                     <p> Số điện thoại</p>
-                                    <input type_="phone" className="form-control" name="soDienThoai" onChange={this.handleChangeInput}>
+                                    <input type_="phone" className="form-control" name="soDienThoai" onChange={this.handleChangeInput} value={sinhvienSua.soDienThoai}>
 
                                     </input>
                                     <p className="text-danger">{this.state.errors.soDienThoai}</p>
@@ -136,6 +147,11 @@ class FormSinhVien extends Component {
                         <div className="row">
                             <div className="col-12 text-right">
                                 <button type="submit" className="btn btn-success">Thêm sinh viên</button>
+                                <button onClick={()=>{
+                                    //disPatch giá trị sau khi ngừi dùng thay đổi lên redux
+                                    let action = capNhapSinhVienAction(this.state.values);
+                                    this.props.dispatch(action)
+                                }} type="button" className="btn btn-primary">Cập Nhập sinh viên</button>
                             </div>
                         </div>
                     </div>
@@ -144,7 +160,21 @@ class FormSinhVien extends Component {
             </form>
         )
     }
+    componentDidUpdate(propsCu,StateCu){
+        // Sset state trong didUpdate phải có if
+        if(this.props.sinhvienSua.maSinhVien !== StateCu.values.maSinhVien){
+            this.setState({
+                values: propsCu.sinhvienSua
+            })
+        }
+        
+    }
+}
+const mapStateToProps = (state) =>{
+    return{
+        sinhvienSua: state.QuanLiSinhVienReducer.sinhVienSua   
+    }
 }
 
 // cách 2 dùng dispatch xem phần handleSummit
-export default connect(null)(FormSinhVien)
+export default connect(mapStateToProps)(FormSinhVien)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormSinhVien from './FormSinhVien'
 import {connect} from 'react-redux'
+import { chinhSuaSinhVienAction } from '../redux/actions/QuanLiSinhVienActions'
  class DanhSachSinhVien extends Component {
 
     renderTable = ()=>{
@@ -9,7 +10,12 @@ import {connect} from 'react-redux'
             <td>{sinhVien.maSinhVien}</td>
             <td>{sinhVien.tenSinhVien}</td>
             <td>{sinhVien.email}</td>
-            <td><button className="btn btn-primary mr-2">Chỉnh sửa </button>
+            <td><button onClick={()=>{
+                //dispatch thông tin sinh viên cập nhập lại state.sinhVienSua trên redux
+                let action = chinhSuaSinhVienAction(sinhVien);
+                //đưa dữ liệu lên reducer
+                this.props.dispatch(action);
+            }} className="btn btn-primary mr-2">Chỉnh sửa </button>
             <button className="btn btn-danger ">Xóa</button>
             </td>
         </tr>
